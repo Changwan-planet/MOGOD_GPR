@@ -1,0 +1,23 @@
+t=139.303478*10**(-9)
+sample=616
+c=3*(10**8)
+dis_interval=0.05
+
+set link y2 via y/(t/sample) inverse y*(t/sample)
+set link x2 via x/dis_interval inverse x*dis_interval
+
+
+set xlabel "DISTANCE [m]" font "arial,20"
+set ylabel "DEPTH [m]" font "arial,20"
+
+set xtics 
+set ytics 
+
+set xtics font "arial,10"
+set ytics font "arial,10"
+
+set yrange[t:0] reverse
+
+set palette negative
+set palette model HSV
+

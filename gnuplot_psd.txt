@@ -1,0 +1,22 @@
+t=139.303478*10**(-9)
+
+r=800*1000000
+
+set link x2 via x*(t) inverse x*(1/(t))
+
+
+set xrange[0:r]
+
+set title "PSD" font "arial,20"
+
+set xlabel "Frequency [Hz]" font "arial,20"
+set ylabel "Power Spectral Density [dB]" font "arial,20"
+
+set grid x y mx my
+set grid lt 0 lc "black" lw 1 back
+
+set key box
+
+set xtics font "arial,10"
+set ytics font "arial,10"
+
