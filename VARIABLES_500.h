@@ -1,6 +1,6 @@
-!=================================
+!================================
 !CHARACTER, DIMENSION(0) :: HEADER   
-INTEGER, PARAMETER :: ROWS=616
+INTEGER, PARAMETER :: ROWS=512
 INTEGER            :: DIS 
 !==================================
 

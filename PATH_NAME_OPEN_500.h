@@ -1,9 +1,14 @@
-!=============================PATH===================================
-COMMON_PATH1="/home/changwan/MOGOD_GPR/2020/Paleo-channel/500MHz/"
+!============================PATH===================================
+!COMMON_PATH1="/home/changwan/MOGOD_GPR/2020/Paleo-channel/500MHz/"
 !COMMON_PATH1="/home/changwan/MOGOD_GPR/2020/Paleo-channel/800MHz"
-COMMON_PATH2="/home/changwan/MOGOD_GPR/2020/Paleo-channel/500MHz/"
+!COMMON_PATH2="/home/changwan/MOGOD_GPR/2020/Paleo-channel/500MHz/"
 
-ITEM_NUMBER="Profile001_500MHz.rd3"
+COMMON_PATH1="/mnt/l/MOGOD_GPR/2021/F1/500MHz/"
+COMMON_PATH2="/mnt/l/MOGOD_GPR/2021/F1/500MHz/"
+
+
+ITEM_NUMBER="f1-500-profile-090.rd3"
+!ITEM_NUMBER="Profile001_500MHz.rd3"
 !ITEM_NUMBER="Source_sine.txt"
 
 OUTPUT_NAME1="A_SCOPE_MGPR.txt"
@@ -14,8 +19,6 @@ OUTPUT_NAME4="STACKED_A_SCOPE.txt"
 OUTPUT_NAME6="HILBERT_A_MGPR.txt"
 OUTPUT_NAME7="HILBERT_STACKED_A_MGPR.txt"
 OUTPUT_NAME8="DFT_STACKED_A_MGPR.txt"
-
-
 
 INPUT_PATH = TRIM(COMMON_PATH1)//ITEM_NUMBER
 OUTPUT_PATH1 = TRIM(COMMON_PATH2)//OUTPUT_NAME1
