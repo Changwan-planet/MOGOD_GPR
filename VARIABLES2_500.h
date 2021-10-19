@@ -7,11 +7,11 @@ INTEGER, PARAMETER :: TRA=100       !G
 
 !===========================================================
 !MOGOD_GPR require 2-Byte input!
-INTEGER*2, DIMENSION(DIS,TRA,ROWS) :: B_SCAN_IMAGE
-REAL*8, DIMENSION(DIS,TRA,ROWS) :: B_SCAN_IMAGE2
+INTEGER*2, DIMENSION(ROWS,DIS,TRA) :: B_SCAN_IMAGE
+REAL*8, DIMENSION(ROWS,DIS,TRA) :: B_SCAN_IMAGE2
+REAL*8, DIMENSION(DIS,TRA,ROWS) :: B_SCAN_IMAGE3
 
-!INTEGER*2, DIMENSION(ROWS,DIS,TRA) :: B_SCAN_IMAGE
-!REAL*8, DIMENSION(ROWS,DIS,TRA) :: B_SCAN_IMAGE2
+
 
 
 !============================================================      
