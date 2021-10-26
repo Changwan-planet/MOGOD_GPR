@@ -7,7 +7,7 @@ from mpl_toolkits.mplot3d import Axes3D
 from scipy.interpolate import interp1d
 import ipyvolume as ipv
 import cv2
-
+import math
 
 def make_patch_spines_invisible(ax):
     ax.set_frame_on(True)
@@ -27,6 +27,14 @@ input_path2="L:/MOGOD_GPR/2021/3D_CUBE_IMAGE_GPR.txt"
 data2=np.loadtxt(input_path2)
 
 
+c_sl = 3*10**8   #speed of light
+t_w = 134.775849*10**(-9) #time window
+permit = 9
+sample = 512
+depth_int = ( c_sl/math.sqrt(9) * t_w ) / sample 
+depth_int = round(depth_int, 2)
+print(depth_int)
+
 #C_SCAN_IMAGE
 
 
@@ -38,22 +46,24 @@ data2=np.loadtxt(input_path2)
 
 
 print(data2.shape)    
-data2_2=data2.reshape(50,2300,100)
+data2_2=data2.reshape(2300,100,512)
+data2_2=data2.reshape(2300,100,512)
+
 
 print(data2_2.shape)
 
 
 fig,host =plt.subplots()
 
-print(data2_2.shape[0])
+print(data2_2.shape[2])
 
 #print(data2_2.shape[1])
 #print(data2_2.shape[2])
 
 ay1_min=0
-ay1_max=data2_2.shape[1]*0.05 #This is Northting.
+ay1_max=data2_2.shape[0]*0.05 #This is Northting.
 ax1_min=0
-ax1_max=data2_2.shape[2]*1 #This is Easting.
+ax1_max=data2_2.shape[1]*1 #This is Easting.
 
 #data2_2[:,1500:2000,50] = 1000000 #Check the direction of the graph
 
@@ -66,7 +76,8 @@ ax1_max=data2_2.shape[2]*1 #This is Easting.
 #     ++++++++++++++++++++++
 #depth = 1
 #print
-rows=list(range(data2_2.shape[0]))
+rows=list(range(data2_2.shape[2]))
+print(data2_2.shape[2])
 
 #     ++++++++++++++++++++
 #++++++Remove the average++++++
@@ -74,7 +85,7 @@ rows=list(range(data2_2.shape[0]))
 
 for depth in rows:
 
- data2_2[depth,:,:] = data2_2[depth,:,:] - np.mean(data2_2[depth,:,:])
+ data2_2[:,:,depth] = data2_2[:,:,depth] - np.mean(data2_2[:,:,depth])
 
 
 for depth in rows:
@@ -82,7 +93,7 @@ for depth in rows:
 # depth = int(input('Please enter the sample that you want. \n'))
 # type(depth)
 
- plt.imshow(data2_2[depth,:,:]
+ plt.imshow(data2_2[:,:,depth]
            ,extent=(ax1_min,ax1_max,ay1_min,ay1_max)
            ,aspect="auto"
            ,cmap='gist_gray'
@@ -92,10 +103,12 @@ for depth in rows:
 #plt.imshow(data2_2[380,:,:],aspect="auto")
 #plt.imshow(data2_2[380,:,:])
 #plt.colorbar()
-
+ depth_title = depth * depth_int
+ print(depth_title,"m")
  plt.colorbar()
- plt.title("F1_500 MHz_survey_line_Int._1m", fontweight="bold")
+ plt.title("F1_500 MHz_survey", fontweight="bold")
  plt.xlabel("Easting [m]. Survey line interval_1 m")
+ 
  #plt.title("F1_250 MHz_survey_line_Int._1m", fontweight="bold")
  #plt.xlabel("Easting [m]. Survey line interval_2 m")
 

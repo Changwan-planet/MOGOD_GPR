@@ -11,9 +11,6 @@ INTEGER*2, DIMENSION(ROWS,DIS,TRA) :: B_SCAN_IMAGE
 REAL*8, DIMENSION(ROWS,DIS,TRA) :: B_SCAN_IMAGE2
 REAL*8, DIMENSION(DIS,TRA,ROWS) :: B_SCAN_IMAGE3
 
-
-
-
 !============================================================      
 
 
@@ -25,6 +22,7 @@ REAL*8, DIMENSION(1:ROWS,1) :: f_imag
 
 
 INTEGER             :: I,J,K,G,P,R, SAMPLE
+INTEGER             :: X, Y, Z
 REAL*8              :: BGR
 
 !=============================================================

@@ -78,13 +78,13 @@ OPEN(UNIT=10, FILE=INPUT_PATH,   ACCESS='STREAM',  STATUS='OLD', ACTION='READ')
       B_SCAN_IMAGE2(:,:,G) = B_SCAN_IMAGE(:,:,G)
 
 !+++++REVERSING THE EVEN_GPR TRACKS+++++++++++++++++++++++
-!!     IF (MOD(G,2)/=0) THEN
-!!         B_SCAN_IMAGE2(:,G,:) = B_SCAN_IMAGE(:,G,:)
-!!     ELSE
-!!      DO P=1,DIS
-!!          B_SCAN_IMAGE2((DIS-P+1),G,:) = B_SCAN_IMAGE(P,G,:) 
-!!      END DO
-!!     END IF
+     IF (MOD(G,2)/=0) THEN
+         B_SCAN_IMAGE2(:,:,G) = B_SCAN_IMAGE(:,:,G)
+     ELSE
+      DO P=1,DIS
+          B_SCAN_IMAGE2(:,(DIS-P+1),G) = B_SCAN_IMAGE(:,P,G) 
+      END DO
+     END IF
 
       PRINT *, "G=",G    
 
@@ -94,11 +94,11 @@ DO X = 1, DIS
 
       B_SCAN_IMAGE3(X,Y,Z) = B_SCAN_IMAGE2(Z,X,Y)
 
-      PRINT *, X,Y,Z,"<----",Z,X,Y
+!      PRINT *, X,Y,Z,"<----",Z,X,Y
 
-    END
-  END
-END 
+    END DO
+  END DO
+END DO
  
 CLOSE(10)
 

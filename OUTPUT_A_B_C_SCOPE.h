@@ -1,63 +1,33 @@
 !=======A-SCOPE===============================
-I=1
-!    I=DIS
-
-!!    DO J = 1, ROWS
-!!       WRITE(20,*) B_SCAN_IMAGE3(I,1,J)
-!        WRITE(20,*) B_SCAN_IMAGE3(J,I,1)
-!!    END DO
-
-      DO J = 1, ROWS
-         WRITE(20,*) J,I, B_SCAN_IMAGE3(J,I,1) 
+X=1
+Y=1
+      DO Z = 1, ROWS
+         WRITE(20,*) B_SCAN_IMAGE3(X,Y,Z) 
       END DO
-   
-!    WRITE(20,*) (B_SCAN_IMAGE3(I,1,J), J=1,ROWS)
-!   PRINT *, (B_SCAN_IMAGE3(I,1,J), J=1,ROWS)
    
 !============================================= 
      
-!======B_SCAN=================================
-!B_SCAN_IMAGE3(ROWS,DIS,TRA)     
-!G = TRA
-!     DO J = 1, ROWS
-!        WRITE(21,*)(B_SCAN_IMAGE3(I,G,J), I=1,DIS)
-!     END DO
+!======B_SCAN=======================================
+!B_SCAN_IMAGE3(DIS,TRA,ROWS)     
+Y = TRA
 
-!=============================================
-!    PRINT *, "CHECK",G
+      DO Z = 1, ROWS
+         WRITE(21,*) (B_SCAN_IMAGE3(X,Y,Z), X=1,DIS) 
+      END DO
+!===================================================
 
-
-!=====C_SCAN_IMAGE============================
-!!PRINT *, "PLEASE ENTER THE SAMPLE AMONG 512 ROWS [DEPTH]."
-!!READ *, J 
-
-       !DO K=1,TRA 
-        !     WRITE(22,*) (B_SCAN_IMAGE3(I,K,J),I=1,DIS)          
-       
-!        DO I=1,DIS    
-
-!           WRITE(22,*) (B_SCAN_IMAGE3(I,K,J),K=1,TRA)         
-!
-!        END DO
-!    PRINT *, "COMPLETE C_SCAN_IMAGE OUPUT"
-!=============================================
 
 
 !=====3D_CUBE_IMAGE============================
 !J=ROWS 
-!!     DO J = 1, ROWS
+      DO X = 1, DIS
+         DO Y = 1, TRA
+            WRITE (23,*) (B_SCAN_IMAGE3(X,Y,Z), Z = 1, ROWS)
+         END DO 
+      END DO
 
-        !FOR PYTHON
-        !DO  K = 1, TRA              
-        !        WRITE(23,*) (B_SCAN_IMAGE3(I,K,J), I = 1, DIS)         
-        !END DO
-
-
-!!        DO  I = 1, DIS              
-!!                WRITE(23,*) (B_SCAN_IMAGE3(I,K,J), K = 1, TRA)         
-!!        END DO
-
-!!     END DO
+!==>  THIS STRUCTURE (X x Y) X Z CAN BE PRINTED. 
+!==>  (X x Y) IS THE C_SCAN.
 !     PRINT *, "COMPLETE 3D_CUBE_IMAGE OUPUT"
 !=============================================
 
